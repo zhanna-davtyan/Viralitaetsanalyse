@@ -38,7 +38,73 @@ Dieses Projekt basiert vollständig auf Python 3 und nutzt einen modernen Data-S
     * **DBSCAN:** Dient als fortgeschrittener Algorithmus, um eine realistischere Anzahl von Clustern basierend auf der Datendichte zu finden und nicht-trendiges "Rauschen" herauszufiltern.
 * **Prädiktive Modellierung (optional):**
     * **XGBoost:** Ein leistungsstarkes Gradient-Boosting-Modell, das verwendet wird, um den Erfolg von Videos vorherzusagen und – was am wichtigsten ist – die Merkmale nach ihrem Beitrag zu diesem Erfolg zu ordnen.
+___
 
----
+## 🔧 Einrichtung & Umgebung (macOS, Linux, Windows)
 
-## 📂 Projektstruktur
+Folge diesen Schritten für eine reproduzierbare lokale Umgebung. Die Anweisungen decken macOS/Linux (zsh/bash), Windows (PowerShell/cmd) und WSL ab.
+
+1) Virtuelle Umgebung erstellen (plattformübergreifend):
+
+```bash
+# macOS / Linux
+python3 -m venv .venv
+# oder auf manchen Windows-Setups
+# python -m venv .venv
+```
+
+2) Virtuelle Umgebung aktivieren
+
+- macOS / Linux (zsh, bash):
+
+```bash
+source .venv/bin/activate
+# Prompt: (.venv) user@host:~/Projekt$
+```
+
+- Windows PowerShell (empfohlen auf Windows):
+
+```powershell
+# Falls nötig (als Administrator): Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+.\.venv\Scripts\Activate.ps1
+# Prompt: (.venv) PS C:\Users\User\Projekt>
+```
+
+- Windows cmd.exe:
+
+```cmd
+.\.venv\Scripts\activate.bat
+```
+
+- WSL (Ubuntu on Windows):
+
+Öffne deine WSL-Shell und benutze die Linux-Befehle:
+
+```bash
+source .venv/bin/activate
+```
+
+3) Abhängigkeiten installieren
+
+```bash
+pip install -r requirements.txt
+# Falls du noch kein requirements.txt hast, installiere die benötigten Pakete einzeln, z. B.: 
+# pip install instaloader pandas numpy scikit-learn matplotlib seaborn ipykernel
+```
+
+4) Jupyter Kernel (optional, damit das Notebook den venv nutzt)
+
+```bash
+pip install ipykernel
+python -m ipykernel install --user --name=viralitaetsanalyse --display-name "Python (viralitaetsanalyse)"
+```
+
+5) Nützliche Befehle
+
+```bash
+# Installierte Pakete anzeigen
+pip list
+
+# Abhängigkeiten in requirements.txt speichern
+pip freeze > requirements.txt
+```
