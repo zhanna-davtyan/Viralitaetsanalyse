@@ -1,6 +1,14 @@
 #  Decoding Virality: Eine algorithmische Analyse von Kurzvideo-Inhalten
 
+<<<<<<< HEAD
 **Projektziel:** Dieses Projekt geht über subjektive Spekulationen hinaus, um eine zentrale Frage der modernen digitalen Landschaft zu beantworten: **Was sind die quantifizierbaren Faktoren, die ein Kurzvideo erfolgreich machen?** Wir wenden eine mehrstufige Datenanalyse- und Machine-Learning-Pipeline an, um visuelle Trends zu identifizieren und das Engagement von Videos vorherzusagen.
+=======
+**Projektziel:** Dieses Projekt geht über subjektive Spekulationen hinaus, um eine zentrale Frage der modernen digitalen Landschaft zu beantworten: 
+
+**Was sind die quantifizierbaren Faktoren, die ein Kurzvideo erfolgreich machen?** 
+
+wWir wenden eine mehrstufige Datenanalyse- und Machine-Learning-Pipeline an, um visuelle Trends zu identifizieren und das Engagement von Videos vorherzusagen.
+>>>>>>> e74b966 (tiktok scripting)
 
 ---
 
