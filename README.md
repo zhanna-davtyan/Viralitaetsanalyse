@@ -1,16 +1,54 @@
 #  Decoding Virality: Eine algorithmische Analyse von Kurzvideo-Inhalten
 
-<<<<<<< HEAD
 **Projektziel:** Dieses Projekt geht über subjektive Spekulationen hinaus, um eine zentrale Frage der modernen digitalen Landschaft zu beantworten: **Was sind die quantifizierbaren Faktoren, die ein Kurzvideo erfolgreich machen?** Wir wenden eine mehrstufige Datenanalyse- und Machine-Learning-Pipeline an, um visuelle Trends zu identifizieren und das Engagement von Videos vorherzusagen.
-=======
-**Projektziel:** Dieses Projekt geht über subjektive Spekulationen hinaus, um eine zentrale Frage der modernen digitalen Landschaft zu beantworten: 
 
-**Was sind die quantifizierbaren Faktoren, die ein Kurzvideo erfolgreich machen?** 
 
-wWir wenden eine mehrstufige Datenanalyse- und Machine-Learning-Pipeline an, um visuelle Trends zu identifizieren und das Engagement von Videos vorherzusagen.
->>>>>>> e74b966 (tiktok scripting)
+**ACHTUNG: Kritische Versionsabhängigkeiten!**
 
----
+Dieses Projekt verwendet Bibliotheken (insbesondere `deepface` und `tensorflow`), die **nicht** mit den neuesten Python-Versionen (wie 3.11+) kompatibel sind.
+
+Die Ausführung erfordert **zwingend Python 3.10.x**.
+
+### Schritt-für-Schritt-Anleitung (macOS)
+
+1.  **Python 3.10 installieren** (falls noch nicht geschehen, z. B. mit Homebrew):
+    ```bash
+    brew install python@3.10
+    ```
+
+2.  **Virtuelles Environment (venv) erstellen:**
+    Stelle sicher, dass du im Hauptverzeichnis (`Viralitaetsanalyse/`) bist und führe aus:
+    ```bash
+    # Erstellt das venv mit Python 3.10
+    python3.10 -m venv .venv
+    ```
+
+3.  **Environment aktivieren:**
+    ```bash
+    source .venv/bin/activate
+    ```
+    *(Dein Terminal-Prompt sollte nun `(.venv)` anzeigen.)*
+
+4.  **Erforderliche Pakete installieren:**
+    Dieser Schritt installiert die exakten Versionen, die für die Kompatibilität (insbesondere für Apple Silicon Macs) erforderlich sind.
+    ```bash
+    # Pip selbst aktualisieren
+    pip install --upgrade pip
+    
+    # TensorFlow 2.11 
+    pip install tensorflow-macos==2.11.0
+    
+    # Exakt passende Numpy-Version
+    pip install numpy==1.24.4
+    
+    # Der Rest der Projekt-Bibliotheken
+    pip install deepface opencv-python pandas matplotlib ultralytics jupyter
+    ```
+
+### Warum diese Versionen?
+
+* **TensorFlow & DeepFace:** `deepface` (für die Emotionsanalyse) basiert auf TensorFlow. Neuere TF-Versionen (wie 2.20, die für Python 3.13 verfügbar sind) haben einen Fehler (`EagerTensor object is not subscriptable`), der die Gesichtserkennung in `deepface` unbrauchbar macht.
+* **Python 3.10:** Ist die letzte Python-Version, die offiziell von `tensorflow==2.11.0` (der stabilsten Version für `deepface`) unterstützt wird.
 
 ## 🚀 Methodik & Vorgehensweise
 
