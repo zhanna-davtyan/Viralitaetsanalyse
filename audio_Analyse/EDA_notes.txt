@@ -1,0 +1,32 @@
+EDA quick insights
+
+Dataframe shape: (197, 22)
+
+
+Feature: bpm
+ group  count       mean       std    median
+normal     97 120.658886 27.832893 120.18532
+   top    100 122.713498 30.020074 120.18532
+Cohen's d (top - normal): 0.071
+t-test p-value: 0.6188, t-stat: 0.498
+Mann-Whitney p-value: 0.7309, stat: 4988.0
+
+Feature: rms_mean
+ group  count     mean     std   median
+normal     97 0.080891 0.05492 0.065872
+   top    100 0.067765 0.05922 0.051596
+Cohen's d (top - normal): -0.230
+t-test p-value: 0.1082, t-stat: -1.614
+Mann-Whitney p-value: 0.02126, stat: 3928.0
+
+Top correlated feature pairs (by absolute Pearson correlation):
+spectral_centroid_mean <> spectral_bandwidth_mean: abs_corr=0.845
+spectral_bandwidth_mean <> spectral_centroid_mean: abs_corr=0.845
+rms_std <> rms_mean: abs_corr=0.753
+rms_mean <> rms_std: abs_corr=0.753
+spectral_centroid_std <> spectral_bandwidth_std: abs_corr=0.691
+spectral_bandwidth_std <> spectral_centroid_std: abs_corr=0.691
+chroma_var_1 <> chroma_var_11: abs_corr=0.659
+chroma_var_11 <> chroma_var_1: abs_corr=0.659
+chroma_var_1 <> chroma_var_6: abs_corr=0.598
+chroma_var_6 <> chroma_var_1: abs_corr=0.598

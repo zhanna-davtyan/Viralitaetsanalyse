@@ -1,0 +1,7 @@
+2025-11-06 09:35:48,869 - INFO - Repo root: c:\Users\CelinaB\Documents\FHDW\Semester 5\Projekt Algorithmen\Viralytics\Viralitaetsanalyse
+2025-11-06 09:35:48,871 - INFO - Data audio dir: c:\Users\CelinaB\Documents\FHDW\Semester 5\Projekt Algorithmen\Viralytics\Viralitaetsanalyse\data\processed\audio
+2025-11-06 09:35:48,872 - INFO - Output dir: c:\Users\CelinaB\Documents\FHDW\Semester 5\Projekt Algorithmen\Viralytics\Viralitaetsanalyse\features
+2025-11-06 09:35:48,873 - INFO - Log file: c:\Users\CelinaB\Documents\FHDW\Semester 5\Projekt Algorithmen\Viralytics\Viralitaetsanalyse\audio_Analyse\logs\feature_extraction.log
+2025-11-06 09:35:48,893 - INFO - webrtcvad is available; speech_ratio will be computed
+2025-11-06 09:35:48,916 - INFO - Found 197 wav files
+2025-11-06 09:38:07,717 - INFO - Wrote 197 rows to c:\Users\CelinaB\Documents\FHDW\Semester 5\Projekt Algorithmen\Viralytics\Viralitaetsanalyse\features\audio_features.csv
