@@ -1,0 +1,53 @@
+VIRALYTICS - FEATURE INTEGRATION REPORT
+============================================================
+
+Datum: 2025-11-10 12:28:44.531943
+
+QUELL-DATEIEN:
+  • Metadaten: metadata_features.csv (200 Videos)
+  • Audio: audio_features.csv (197 Videos)
+  • Video: video_features.csv (197 Videos)
+
+FINALE MATRIX:
+  • Videos: 197
+  • Features: 38
+
+FEATURE-LISTE:
+    1. group
+    2. is_viral_proxy
+    3. txt_title_has_mention
+    4. txt_title_has_question
+    5. txt_title_has_hashtag
+    6. bpm
+    7. rms_mean
+    8. rms_std
+    9. spectral_centroid_mean
+   10. spectral_centroid_std
+   11. spectral_bandwidth_mean
+   12. spectral_bandwidth_std
+   13. speech_ratio
+   14. chroma_var_0
+   15. chroma_var_1
+   16. chroma_var_2
+   17. chroma_var_3
+   18. chroma_var_4
+   19. chroma_var_5
+   20. chroma_var_6
+   21. chroma_var_7
+   22. chroma_var_8
+   23. chroma_var_9
+   24. chroma_var_10
+   25. chroma_var_11
+   26. schnitt_frequenz
+   27. durchschnittliche_bewegung
+   28. anzahl_frames
+   29. video_dauer_sek
+   30. ist_person_prominent
+   31. ist_tier_sichtbar
+   32. avg_objekte_pro_frame
+   33. avg_gesichter_pro_frame
+   34. dominante_emotion
+   35. ist_text_eingeblendet
+   36. text_sentiment_compound
+   37. video_kategorie
+   38. is_viral

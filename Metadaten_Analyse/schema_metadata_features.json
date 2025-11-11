@@ -1,0 +1,19 @@
+{
+  "video_id": "int64",
+  "group": "object",
+  "is_viral_proxy": "int64",
+  "acct_uploader_len": "int64",
+  "acct_uploader_digits_ratio": "float64",
+  "acct_creator_verified": "int64",
+  "acct_creator_follower_log": "float64",
+  "acct_creator_posts_log": "float64",
+  "txt_title_len_chars": "int64",
+  "txt_title_len_words": "int64",
+  "txt_title_has_question": "int64",
+  "txt_title_has_exclaim": "int64",
+  "txt_title_has_hashtag": "int64",
+  "txt_title_has_mention": "int64",
+  "txt_title_has_url": "int64",
+  "len_duration_s": "int64",
+  "len_bucket": "category"
+}

@@ -19,3 +19,41 @@ build/
 dist/
 *.egg-info/
 
+
+# Virtual environment
+.venv/
+
+# Python caches
+__pycache__/
+*.py[cod]
+
+# Jupyter
+.ipynb_checkpoints/
+
+# macOS
+.DS_Store
+
+# VSCode
+.vscode/
+
+# Byte-compiled / distribution
+build/
+dist/
+*.egg-info/
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+
+.venv/
+.env/
+
+# IDE 
+.vscode/
+.idea/
+
+# bigdata
+test_videos/
+*.mp4

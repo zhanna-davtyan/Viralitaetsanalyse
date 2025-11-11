@@ -1,0 +1,32 @@
+{
+  "Logistic Regression": {
+    "accuracy": 0.425,
+    "f1_score": 0.3783783783783784,
+    "auc_roc": 0.47
+  },
+  "Decision Tree": {
+    "accuracy": 0.475,
+    "f1_score": 0.46153846153846156,
+    "auc_roc": 0.475
+  },
+  "Random Forest": {
+    "accuracy": 0.575,
+    "f1_score": 0.5641025641025641,
+    "auc_roc": 0.6299999999999999
+  },
+  "Gradient Boosting": {
+    "accuracy": 0.45,
+    "f1_score": 0.47619047619047616,
+    "auc_roc": 0.46749999999999997
+  },
+  "XGBoost": {
+    "accuracy": 0.625,
+    "f1_score": 0.6341463414634146,
+    "auc_roc": 0.6775
+  },
+  "SVM": {
+    "accuracy": 0.475,
+    "f1_score": 0.46153846153846156,
+    "auc_roc": 0.48125
+  }
+}

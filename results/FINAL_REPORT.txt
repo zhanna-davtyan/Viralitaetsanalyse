@@ -1,0 +1,62 @@
+============================================================
+VIRALYTICS - FINALE ERGEBNISSE
+Vorhersage von viralen TikTok-Videos
+============================================================
+
+DATENSATZ:
+  • Gesamt Videos: 197
+  • Virale Videos: 100 (50.8%)
+  • Normale Videos: 97 (49.2%)
+  • Anzahl Features: 49
+
+BESTES MODELL:
+  • Name: XGBoost
+  • Accuracy: 0.625
+  • F1-Score: 0.634
+  • AUC-ROC: 0.677
+
+ALLE MODELLE (nach F1-Score):
+  1. XGBoost                   F1: 0.634  AUC: 0.677
+  2. Random Forest             F1: 0.564  AUC: 0.630
+  3. Gradient Boosting         F1: 0.476  AUC: 0.467
+  4. Decision Tree             F1: 0.462  AUC: 0.475
+  5. SVM                       F1: 0.462  AUC: 0.481
+  6. Logistic Regression       F1: 0.378  AUC: 0.470
+
+============================================================
+TOP 10 WICHTIGSTE FEATURES:
+============================================================
+
+   3. txt_title_has_hashtag                    0.1850
+  39. video_kategorie_Comedy                   0.0564
+   1. txt_title_has_mention                    0.0412
+  18. chroma_var_6                             0.0406
+  24. schnitt_frequenz                         0.0363
+  10. spectral_bandwidth_std                   0.0363
+  13. chroma_var_1                             0.0351
+  25. durchschnittliche_bewegung               0.0343
+   7. spectral_centroid_mean                   0.0313
+  26. anzahl_frames                            0.0298
+
+============================================================
+FEATURE-KATEGORIEN:
+============================================================
+
+  • Audio           0.5333 (53.3%) - 20 Features
+  • Video           0.2406 (24.1%) - 26 Features
+  • Metadaten       0.2261 (22.6%) - 3 Features
+
+============================================================
+SCHLUSSFOLGERUNGEN:
+============================================================
+
+1. Die 'Audio'-Features haben den größten Einfluss
+   auf die Viralität (53.3%).
+
+2. Das wichtigste einzelne Feature ist 'txt_title_has_hashtag'.
+
+3. Das beste Modell (XGBoost) erreicht einen
+   F1-Score von 0.634, was eine
+   gute Vorhersagegenauigkeit darstellt.
+
+============================================================

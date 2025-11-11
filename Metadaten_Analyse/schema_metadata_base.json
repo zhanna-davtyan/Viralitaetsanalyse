@@ -1,0 +1,41 @@
+{
+  "required": [
+    "video_id",
+    "group"
+  ],
+  "optional": [
+    "title",
+    "description",
+    "uploader",
+    "upload_time",
+    "create_time",
+    "timestamp",
+    "create_date",
+    "duration_s",
+    "creator_verified",
+    "creator_follower_count",
+    "creator_posts_count",
+    "likes",
+    "comments",
+    "views",
+    "shares",
+    "engagement_score",
+    "rank",
+    "source_file"
+  ],
+  "dtypes_snapshot": {
+    "rank": "int64",
+    "group": "object",
+    "video_id": "object",
+    "uploader": "object",
+    "likes": "int64",
+    "comments": "int64",
+    "views": "int64",
+    "shares": "int64",
+    "engagement_score": "int64",
+    "title": "object",
+    "duration_s": "int64",
+    "source_file": "object",
+    "is_viral_proxy": "int64"
+  }
+}
