@@ -5,7 +5,7 @@ Viralytics Feature Extractor
 =============================
 Pipeline-Refactoring: Integration von T1-T4 Code
 
-Verantwortlich: T4 (Jolanda)
+Verantwortlich: ML von A
 Verwendung: Backend (B) für den /predict Endpunkt
 """
 
