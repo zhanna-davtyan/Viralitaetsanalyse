@@ -172,7 +172,7 @@ def extract_video_features(video_path: str) -> dict:
     """
     T3 Video-Feature-Extraktion
     
-    Aus dem T3-Notebook integriert
+    Aus dem T3 integriert
     """
     
     if not CV2_AVAILABLE:
@@ -329,8 +329,7 @@ def get_default_video_features() -> dict:
 
 def validate_features(features: dict) -> dict:
     """
-    T4: Feature-Validierung
-    Sicherstellen, dass alle Features vorhanden und gültig sind
+    T4: Feature-Validierung Sicherstellen, dass alle Features vorhanden und gültig sind
     """
     # NaN und Inf prüfen
     for key, value in features.items():
@@ -350,7 +349,7 @@ if __name__ == "__main__":
     print(" Feature Extractor Test (T4 Pipeline)")
     print("=" * 60)
     
-    # Test-Video (verwenden Sie Ihr heruntergeladenes Video)
+    # Test-Video geben
     test_video = Path("test_videos/test_normal_7544548353590250758.mp4")
     
     if test_video.exists():
