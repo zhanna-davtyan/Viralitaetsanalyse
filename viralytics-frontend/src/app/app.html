@@ -1,0 +1,115 @@
+<div class="card">
+  
+  <div class="header">
+    <h1 class="header-title">Viralytics</h1>
+    <p class="header-subtitle">
+      Finden Sie heraus, ob Ihr Video virales Potenzial hat.
+    </p>
+  </div>
+
+  @if (appState() === 'error') {
+    <div class="state-container" style="text-align: center;">
+      <div style="color: #f87171; background: rgba(248,113,113,0.1); padding: 1rem; border-radius: 0.5rem; border: 1px solid #f87171;">
+        <h3 style="margin: 0 0 0.5rem 0; font-weight: bold;">Fehler</h3>
+        <p style="margin: 0; font-size: 0.9rem;">{{ errorMessage() }}</p>
+      </div>
+      <button (click)="reset()" class="btn btn-secondary">Zurück</button>
+    </div>
+  }
+
+  @if (appState() === 'upload') {
+    <div class="state-container">
+      <label 
+        for="file-upload" 
+        class="dropzone"
+        [class.drag-over]="isDragging()"
+        (dragover)="onDragOver($event)"
+        (dragleave)="onDragLeave($event)"
+        (drop)="onDrop($event)">
+        
+        <svg class="dropzone-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M12 16.5V9.75m0 0l-3 3m3-3l3 3M6.75 19.5a4.5 4.5 0 01-1.41-8.775 5.25 5.25 0 0110.233-2.33 3 3 0 013.758 3.848A3.752 3.752 0 0118 19.5H6.75z" />
+        </svg>
+
+        <p><span class="dropzone-highlight">Datei hierher ziehen</span> oder klicken</p>
+        <p class="dropzone-p-small">MP4, MOV, AVI (max. 100MB)</p>
+        
+        <input id="file-upload" type="file" class="file-input-hidden" (change)="onFileSelect($event)" accept="video/*" />
+      </label>
+
+      @if (fileName()) {
+        <div class="file-display">
+          <div class="file-display-info">
+            <svg class="file-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 10.5l4.72-4.72a.75.75 0 011.28.53v11.38a.75.75 0 01-1.28.53l-4.72-4.72M4.5 18.75h9a2.25 2.25 0 002.25-2.25v-9a2.25 2.25 0 00-2.25-2.25h-9A2.25 2.25 0 002.25 7.5v9a2.25 2.25 0 002.25 2.25z" />
+            </svg>
+            <span class="file-name">{{ fileName() }}</span>
+          </div>
+          <button (click)="reset()" title="Remove file" class="file-remove-btn">&times;</button>
+        </div>
+      }
+
+      <button (click)="analyze()" [disabled]="!selectedFile()" class="btn btn-primary">
+        Video Analysieren
+      </button>
+    </div>
+  }
+
+  @if (appState() === 'analyzing') {
+    <div class="analyzing-container">
+      <div class="spinner"></div>
+      <p class="analyzing-text-lg">Analysiere Video-Features...</p>
+      <p class="analyzing-text-sm">Extrahiere Audio, Helligkeit, Bewegung...</p>
+    </div>
+  }
+
+  @if (appState() === 'result' && analysisResult()) {
+    <div class="state-container">
+      <h2 class="result-header">Analyse-Ergebnis</h2>
+      
+      <div class="result-score-box">
+        <p class="result-score-label">
+          Klassifikation: <span style="text-transform: uppercase; color: white;">{{ analysisResult()!.label }}</span>
+        </p>
+        <p class="result-score-number" 
+           [style.color]="analysisResult()!.label === 'viral' ? '#4ade80' : '#f87171'">
+          {{ analysisResult()!.score }}%
+        </p>
+        <p class="result-score-text">Viral-Wahrscheinlichkeit</p>
+      </div>
+
+      <div class="result-feedback-box">
+        <h3 class="result-feedback-header">Interpretation:</h3>
+        <p class="result-feedback-text">
+          {{ analysisResult()!.feedback }}
+        </p>
+      </div>
+
+      <div class="features-container">
+        <h3 class="features-header">KI-Details (Extrahierte Features)</h3>
+        <div class="table-wrapper">
+          <table class="features-table">
+            <thead>
+              <tr>
+                <th>Feature Name</th>
+                <th>Wert</th>
+              </tr>
+            </thead>
+            <tbody>
+              @for (feat of analysisResult()!.features; track feat.key) {
+                <tr>
+                  <td class="feature-key">{{ feat.key }}</td>
+                  <td class="feature-value">{{ feat.value }}</td>
+                </tr>
+              }
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <button (click)="reset()" class="btn btn-secondary">
+        Neues Video analysieren
+      </button>
+    </div>
+  }
+</div>

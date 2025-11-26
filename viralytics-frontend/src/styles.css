@@ -1,0 +1,12 @@
+body, html {
+  min-height: 100vh;
+  margin: 0;
+  background-color: #111827; /* bg-gray-900 */
+  color: #f3f4f6; /* text-gray-100 */
+  font-family: system-ui, -apple-system, sans-serif;
+
+  /* Zentriert die App-Karte */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
