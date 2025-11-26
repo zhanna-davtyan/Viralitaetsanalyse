@@ -154,3 +154,82 @@ pip list
 # Abhängigkeiten in requirements.txt speichern
 pip freeze > requirements.txt
 ```
+
+
+# Viralytics Frontend
+
+Dies ist das Angular-Frontend für **Viralytics**, ein KI-gestütztes Tool zur Vorhersage der Viralität von Kurzvideos (Instagram Reels, TikToks).
+
+Es bietet eine Drag-and-Drop-Schnittstelle, um Videos hochzuladen, visualisiert den Viralitäts-Score und zeigt detaillierte Audio-, Video- und KI-Features in einer Tabelle an.
+
+---
+
+## 📋 Voraussetzungen
+
+Bevor du startest, stelle sicher, dass folgende Tools installiert sind:
+
+* **Node.js** (Version 18 oder höher empfohlen): [Download](https://nodejs.org/)
+* **Angular CLI**: Installiere es global über dein Terminal:
+    ```bash
+    npm install -g @angular/cli
+    ```
+
+---
+
+## 🛠️ Installation
+
+1.  Navigiere in das Frontend-Verzeichnis:
+    ```bash
+    cd viralytics-frontend
+    ```
+
+2.  Installiere die Abhängigkeiten (Packages):
+    ```bash
+    npm install
+    ```
+    *(Dies lädt Angular, TypeScript und andere notwendige Bibliotheken herunter und speichert sie im `node_modules` Ordner.)*
+
+---
+
+## ⚙️ Konfiguration
+
+### Backend-Verbindung
+Das Frontend kommuniziert standardmäßig mit dem lokalen FastAPI-Backend unter `http://127.0.0.1:8000`.
+
+Falls du das Backend auf einem anderen Port oder Server laufen lässt, musst du die URL anpassen:
+
+1.  Öffne die Datei: `src/app/app.ts`
+2.  Suche nach der Zeile:
+    ```typescript
+    private backendUrl = '[http://127.0.0.1:8000/predict](http://127.0.0.1:8000/predict)';
+    ```
+3.  Ändere die URL entsprechend deiner Backend-Konfiguration.
+
+---
+
+## ▶️ Starten der Anwendung
+
+1.  Stelle sicher, dass dein **Python Backend läuft** (siehe Backend-Dokumentation), sonst erhältst du Verbindungsfehler.
+
+2.  Starte den Angular Development Server:
+    ```bash
+    ng serve
+    ```
+    *Alternativ kannst du auch `npm start` verwenden.*
+
+3.  Öffne deinen Browser und gehe auf:
+    👉 **http://localhost:4200/**
+
+---
+
+##  Features & Nutzung
+
+1.  **Video Upload:**
+    * Ziehe eine Videodatei (`.mp4`, `.mov`, `.avi`) in die gestrichelte Dropzone.
+    * Oder klicke auf die Zone, um den Datei-Explorer zu öffnen.
+    * Klicke auf "Video Analysieren".
+
+2.  **Analyse-Ergebnis:**
+    * **Score:** Zeigt die Wahrscheinlichkeit (0-100%), dass das Video viral geht.
+    * **KI-Feedback:** Ein generierter Text, der Stärken und Schwächen interpretiert.
+    * **Feature-Tabelle:** Eine detaillierte Auflistung aller extrahierten Metriken (z.B. `ist_person_prominent`, `bpm`, `schnitt_frequenz`).
