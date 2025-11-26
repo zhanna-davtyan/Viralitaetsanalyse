@@ -1,5 +1,6 @@
 from fastapi import FastAPI, UploadFile, File, HTTPException
 from contextlib import asynccontextmanager
+from fastapi.middleware.cors import CORSMiddleware
 import logging
 from pathlib import Path
 from typing import Optional
@@ -7,17 +8,41 @@ import joblib
 import pandas as pd
 import json
 import numpy as np
+import sys
 
 try:
     # import database helper from the backend package
     import backend.database as database
-except Exception:
-    # best-effort import; database module is expected to live in backend/database.py
+    print("SUCCESS: Database Modul geladen (relativ)")
+except ImportError:
+    try:
+        # Fallback: Absoluter Import
+        import database
+        print("SUCCESS: Database Modul geladen (absolut)")
+    except Exception as e:
+        print(f"WARNING: Konnte Datenbank-Modul nicht laden! Daten werden nicht gespeichert.")
+        print(f"Grund: {e}")
+        database = None
+except Exception as e:
+    print(f"WARNING: Unerwarteter Fehler beim DB-Import: {e}")
     database = None
 
 try:
-    import feature_extractor
-except Exception:
+    # Versuche relativen Import (Standard für Module im gleichen Ordner)
+    from . import feature_extractor
+    print("SUCCESS: Feature Extractor geladen (relativ)")
+except ImportError as e:
+    try:
+        # Fallback: Absoluter Import
+        import feature_extractor
+        print("SUCCESS: Feature Extractor geladen (absolut)")
+    except Exception as e2:
+        print(f"CRITICAL ERROR: Konnte feature_extractor nicht laden!")
+        print(f"Grund 1: {e}")
+        print(f"Grund 2: {e2}")
+        feature_extractor = None
+except Exception as e:
+    print(f"CRITICAL ERROR: Unerwarteter Fehler beim Import: {e}")
     feature_extractor = None
 
 logger = logging.getLogger("viralytics.backend")
@@ -171,14 +196,14 @@ async def predict(file: UploadFile = File(...)):
     score: Optional[float] = None
     try:
         if hasattr(model, "predict_proba"):
-            proba = model.predict_proba(X)
+            proba = model.predict_proba(X.values)
             # assume positive class is at index 1
             if proba.ndim == 2 and proba.shape[1] >= 2:
                 score = float(proba[:, 1][0])
             else:
                 score = float(proba[0])
         elif hasattr(model, "predict"):
-            pred = model.predict(X)
+            pred = model.predict(X.values)
             # If predict returns probabilities
             if isinstance(pred, (list, tuple)) or hasattr(pred, "shape"):
                 val = pred[0]
@@ -204,10 +229,25 @@ async def predict(file: UploadFile = File(...)):
         raise HTTPException(status_code=500, detail="Invalid score value from model")
 
     label = "viral" if score >= 0.5 else "normal"
+    
+    # --- TABELLE IM BACKEND-LOG ---
+    print("\n" + "="*50)
+    print(f"📊 FEATURES FÜR: {filename}")
+    print("="*50)
+    print(f"{'FEATURE':<30} | {'WERT':<15}")
+    print("-" * 50)
+    # Sortiert ausgeben für bessere Lesbarkeit
+    for key, val in sorted(features.items()):
+        # Runden für schöne Anzeige
+        val_str = f"{val:.4f}" if isinstance(val, float) else str(val)
+        print(f"{key:<30} | {val_str:<15}")
+    print("="*50 + "\n")
+    # --------------------------------------------
 
     # Persist analysis result if DB available
     try:
         if database is not None and hasattr(database, "insert_analysis"):
+            explanation_json = json.dumps(features)
             try:
                 database.insert_analysis(str(dest.name), score, label, None)
             except Exception as e:
@@ -216,14 +256,26 @@ async def predict(file: UploadFile = File(...)):
         # ignore DB errors for response
         pass
 
-    return {"filename": str(dest.name), "score": score, "label": label}
-
+    return {
+            "filename": str(dest.name), 
+            "score": score, 
+            "label": label,
+            "features": features
+        }
 
 if __name__ == "__main__":
     # Optional development server start (uvicorn may or may not be installed)
     try:
         import uvicorn
 
-        uvicorn.run("backend.main:app", host="127.0.0.1", port=8000, reload=True)
+        uvicorn.run("main:app", host="127.0.0.1", port=8000, reload=True)
     except Exception:
         print("uvicorn not available - run the app with an ASGI server of your choice")
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["http://localhost:4200"], 
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
