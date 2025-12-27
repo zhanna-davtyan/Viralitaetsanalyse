@@ -158,7 +158,7 @@ pip freeze > requirements.txt
 
 # Viralytics Frontend
 
-Dies ist das Angular-Frontend für **Viralytics**, ein KI-gestütztes Tool zur Vorhersage der Viralität von Kurzvideos (Instagram Reels, TikToks).
+Dies ist das Angular-Frontend für **Viralytics**, ein KI-gestütztes Tool zur Vorhersage der Viralität von Kurzvideos.
 
 Es bietet eine Drag-and-Drop-Schnittstelle, um Videos hochzuladen, visualisiert den Viralitäts-Score und zeigt detaillierte Audio-, Video- und KI-Features in einer Tabelle an.
 
